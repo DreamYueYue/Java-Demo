@@ -5,3 +5,5 @@
 3. Spring Security之Resource Server的配置
 4. Spring Security之Auth Server的配置
 5. Aouth2使用password模式
+6. H2 memory DataBase
+7. Spring Data Jpa
