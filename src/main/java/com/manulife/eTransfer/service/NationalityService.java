@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NationalityService {
@@ -33,6 +34,6 @@ public class NationalityService {
     }
 
     public NationalityEntity getById(Long id) {
-        return nationalityRepository.getOne(id);
+        return nationalityRepository.findById(id).get();
     }
 }
