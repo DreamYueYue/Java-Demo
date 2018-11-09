@@ -6,6 +6,7 @@
 package com.manulife.eTransfer.api;
 
 import com.manulife.eTransfer.domain.Natinality;
+import com.manulife.eTransfer.entity.NationalityEntity;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +24,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-06T16:44:34.407+08:00")
 
-@Api(value = "natinality", description = "the natinality API")
+@Api(value = "natinality", description = "the natinality API", tags={ "Natinality", })
 public interface NatinalityApi {
 
     @ApiOperation(value = "Add a new Natinality", nickname = "addNatinality", notes = "", authorizations = {
@@ -38,7 +39,7 @@ public interface NatinalityApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
+    ResponseEntity<Object> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
 
 
     @ApiOperation(value = "Deletes a Natinality", nickname = "deleteNatinality", notes = "", authorizations = {
@@ -56,7 +57,12 @@ public interface NatinalityApi {
     ResponseEntity<Void> deleteNatinality(@ApiParam(value = "natinality id to delete", required = true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "Find pet by ID", nickname = "getNatinalityById", notes = "Returns a single pet", response = Natinality.class, tags={ "Natinality", })
+    @ApiOperation(value = "Find pet by ID", nickname = "getNatinalityById", notes = "Returns a single pet", authorizations = {
+            @Authorization(value = "petstore_auth", scopes = {
+                    @AuthorizationScope(scope = "write:pets", description = "modify natinality in your account"),
+                    @AuthorizationScope(scope = "read:pets", description = "read your natinality")
+            })
+    }, response = NationalityEntity.class, tags={ "Natinality", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Natinality.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
@@ -64,7 +70,7 @@ public interface NatinalityApi {
     @RequestMapping(value = "/natinality/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Natinality> getNatinalityById(@ApiParam(value = "ID of pet to return", required = true) @PathVariable("id") Long id);
+    ResponseEntity<NationalityEntity> getNatinalityById(@ApiParam(value = "ID of pet to return", required = true) @PathVariable("id") Long id);
 
 
     @ApiOperation(value = "Update an existing pet", nickname = "updateNatinality", notes = "", authorizations = {
@@ -81,6 +87,20 @@ public interface NatinalityApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<Void> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
+    ResponseEntity<Object> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
 
+    @ApiOperation(value = "Find All", nickname = "getNatinality", notes = "Returns List", authorizations = {
+            @Authorization(value = "petstore_auth", scopes = {
+                    @AuthorizationScope(scope = "write:pets", description = "modify natinality in your account"),
+                    @AuthorizationScope(scope = "read:pets", description = "read your natinality")
+            })
+    }, response = NationalityEntity.class, tags={ "Natinality", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation", response = Natinality.class),
+            @ApiResponse(code = 400, message = "Invalid ID supplied"),
+            @ApiResponse(code = 404, message = "Natinality not found") })
+    @RequestMapping(value = "/natinality",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<Object> getNatinality();
 }
