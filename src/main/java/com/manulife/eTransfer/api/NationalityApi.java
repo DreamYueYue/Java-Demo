@@ -5,27 +5,21 @@
  */
 package com.manulife.eTransfer.api;
 
-import com.manulife.eTransfer.domain.Natinality;
+import com.manulife.eTransfer.domain.Nationality;
 import com.manulife.eTransfer.entity.NationalityEntity;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-06T16:44:34.407+08:00")
 
 @Api(value = "natinality", description = "the natinality API", tags={ "Natinality", })
-public interface NatinalityApi {
+public interface NationalityApi {
 
     @ApiOperation(value = "Add a new Natinality", nickname = "addNatinality", notes = "", authorizations = {
         @Authorization(value = "petstore_auth", scopes = {
@@ -39,7 +33,7 @@ public interface NatinalityApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Object> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
+    ResponseEntity<Object> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Nationality body);
 
 
     @ApiOperation(value = "Deletes a Natinality", nickname = "deleteNatinality", notes = "", authorizations = {
@@ -64,7 +58,7 @@ public interface NatinalityApi {
             })
     }, response = NationalityEntity.class, tags={ "Natinality", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = Natinality.class),
+        @ApiResponse(code = 200, message = "successful operation", response = Nationality.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 404, message = "Natinality not found") })
     @RequestMapping(value = "/natinality/{id}",
@@ -87,7 +81,7 @@ public interface NatinalityApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<Object> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body);
+    ResponseEntity<Object> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Nationality body);
 
     @ApiOperation(value = "Find All", nickname = "getNatinality", notes = "Returns List", authorizations = {
             @Authorization(value = "petstore_auth", scopes = {
@@ -96,7 +90,7 @@ public interface NatinalityApi {
             })
     }, response = NationalityEntity.class, tags={ "Natinality", })
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "successful operation", response = Natinality.class),
+            @ApiResponse(code = 200, message = "successful operation", response = Nationality.class),
             @ApiResponse(code = 400, message = "Invalid ID supplied"),
             @ApiResponse(code = 404, message = "Natinality not found") })
     @RequestMapping(value = "/natinality",

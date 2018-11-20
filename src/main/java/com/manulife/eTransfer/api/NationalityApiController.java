@@ -1,7 +1,7 @@
 package com.manulife.eTransfer.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.manulife.eTransfer.domain.Natinality;
+import com.manulife.eTransfer.domain.Nationality;
 import com.manulife.eTransfer.entity.NationalityEntity;
 import com.manulife.eTransfer.service.NationalityService;
 import io.swagger.annotations.*;
@@ -17,31 +17,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-06T16:44:34.407+08:00")
 
 @Controller
-public class NatinalityApiController implements NatinalityApi {
+public class NationalityApiController implements NationalityApi {
 
     @Autowired
     private NationalityService nationalityService;
 
-    private static final Logger log = LoggerFactory.getLogger(NatinalityApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(NationalityApiController.class);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public NatinalityApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public NationalityApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    public ResponseEntity<Object> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body) {
+    public ResponseEntity<Object> addNatinality(@ApiParam(value = "Pet object that needs to be added to the store", required = true) @Valid @RequestBody Nationality body) {
         System.out.println("add.....");
         NationalityEntity nationalityEntity = new NationalityEntity();
         BeanUtils.copyProperties(body, nationalityEntity);
@@ -59,7 +58,7 @@ public class NatinalityApiController implements NatinalityApi {
         return new ResponseEntity<NationalityEntity>(nationalityService.getById(id), HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Natinality body) {
+    public ResponseEntity<Object> updateNatinality(@ApiParam(value = "Natinality object that needs to be added to the store", required = true) @Valid @RequestBody Nationality body) {
         NationalityEntity nationalityEntity = new NationalityEntity();
         BeanUtils.copyProperties(body, nationalityEntity);
         return new ResponseEntity<Object>(nationalityService.update(Arrays.asList(nationalityEntity)), HttpStatus.OK);

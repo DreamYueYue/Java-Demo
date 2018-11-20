@@ -2,11 +2,9 @@ package com.manulife.eTransfer.domain;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
+
 import javax.validation.constraints.*;
 
 /**
@@ -15,7 +13,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-06T16:44:34.407+08:00")
 
-public class Natinality   {
+public class Nationality {
   @JsonProperty("id")
   private Long id = null;
 
@@ -34,7 +32,7 @@ public class Natinality   {
   @JsonProperty("SortOrder")
   private Integer sortOrder = null;
 
-  public Natinality id(Long id) {
+  public Nationality id(Long id) {
     this.id = id;
     return this;
   }
@@ -54,7 +52,7 @@ public class Natinality   {
     this.id = id;
   }
 
-  public Natinality nationalityCode(String nationalityCode) {
+  public Nationality nationalityCode(String nationalityCode) {
     this.nationalityCode = nationalityCode;
     return this;
   }
@@ -74,7 +72,7 @@ public class Natinality   {
     this.nationalityCode = nationalityCode;
   }
 
-  public Natinality name(String name) {
+  public Nationality name(String name) {
     this.name = name;
     return this;
   }
@@ -95,7 +93,7 @@ public class Natinality   {
     this.name = name;
   }
 
-  public Natinality nationalityEn(String nationalityEn) {
+  public Nationality nationalityEn(String nationalityEn) {
     this.nationalityEn = nationalityEn;
     return this;
   }
@@ -115,7 +113,7 @@ public class Natinality   {
     this.nationalityEn = nationalityEn;
   }
 
-  public Natinality nationalityChi(String nationalityChi) {
+  public Nationality nationalityChi(String nationalityChi) {
     this.nationalityChi = nationalityChi;
     return this;
   }
@@ -135,7 +133,7 @@ public class Natinality   {
     this.nationalityChi = nationalityChi;
   }
 
-  public Natinality sortOrder(Integer sortOrder) {
+  public Nationality sortOrder(Integer sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -164,7 +162,7 @@ public class Natinality   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Natinality natinality = (Natinality) o;
+    Nationality natinality = (Nationality) o;
     return Objects.equals(this.id, natinality.id) &&
         Objects.equals(this.nationalityCode, natinality.nationalityCode) &&
         Objects.equals(this.name, natinality.name) &&

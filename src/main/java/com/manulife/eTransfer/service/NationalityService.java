@@ -3,6 +3,8 @@ package com.manulife.eTransfer.service;
 import com.manulife.eTransfer.entity.NationalityEntity;
 import com.manulife.eTransfer.repository.NationalityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,7 @@ public class NationalityService {
     private NationalityRepository nationalityRepository;
 
     @Transactional
+    @CacheEvict(value = "thisredis", key = "#root.caches[0].name")
     public List<NationalityEntity> add(List<NationalityEntity> nationalityEntityList) {
         return nationalityRepository.saveAll(nationalityEntityList);
     }
@@ -29,10 +32,13 @@ public class NationalityService {
         return nationalityRepository.saveAll(nationalityEntityList);
     }
 
+    @Cacheable(value = "thisredis", key = "#root.caches[0].name")
     public List<NationalityEntity> getAll() {
+        System.out.println("cache...");
         return nationalityRepository.findAll();
     }
 
+    @Cacheable(value = "thisredis", key = "#id")
     public NationalityEntity getById(Long id) {
         return nationalityRepository.findById(id).get();
     }

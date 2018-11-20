@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Table(name = "nationality")
@@ -15,7 +16,8 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NationalityEntity {
+public class NationalityEntity implements Serializable {
+    private static final long serialVersionUID = 2951552383153476605L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
