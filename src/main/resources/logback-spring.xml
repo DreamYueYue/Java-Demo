@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<springProperty scope="context" name="springAppName"
+		source="spring.application.name" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- <encoder class="net.logstash.logback.encoder.LogstashEncoder"/> -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+	</root>
+	<springProfile name="dev,dev-integration,sit,uat,prod">
+		<logger name="com.manulife" level="INFO" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+	</springProfile>
+	<springProfile name="local,dev">
+		<logger name="com.manulife" level="DEBUG" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="org.hibernate" level="DEBUG" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="org.hibernate.type" level="DEBUG" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
+			level="TRACE" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="org.springframework.jdbc.core.JdbcTemplate"
+			level="DEBUG" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="org.springframework.jdbc.core.StatementCreatorUtils"
+			level="TRACE" additivity="false">
+			<appender-ref ref="CONSOLE" />
+		</logger>
+	</springProfile>
+</configuration>
